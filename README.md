@@ -30,18 +30,18 @@ to run the tests.
     Ex: initialDate=2018-11-10T10:10:10Z&delay=3
    * Output: 
 
-      {
-            "ok": true,
-            "initialQuery": {
-                  "initialDate": "2018-11-10T10:10:10Z",
-                  "delay": 3
-            },
-            "results": {
-                  "businessDate": "2018-11-15T12:10:10.000+02:00",
-                  "totalDays": 6,
-                  "holidayDays": 1,
-                  "weekendDays": 2
+            {
+                  "ok": true,
+                  "initialQuery": {
+                        "initialDate": "2018-11-10T10:10:10Z",
+                        "delay": 3
+                  },
+                  "results": {
+                        "businessDate": "2018-11-15T12:10:10.000+02:00",
+                        "totalDays": 6,
+                        "holidayDays": 1,
+                        "weekendDays": 2
+                  }
             }
-      }
 
 
