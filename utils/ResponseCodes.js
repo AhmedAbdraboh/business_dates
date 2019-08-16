@@ -1,0 +1,4 @@
+module.exports = {
+  STATUS_CODE_INVALID_PARAMS: 400,
+  STATUS_CODE_SUCESS: 200
+}

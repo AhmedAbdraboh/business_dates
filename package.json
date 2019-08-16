@@ -1,0 +1,27 @@
+{
+  "name": "business_dates",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha --exit && standard"
+  },
+  "author": "Ahmed Abdraboh",
+  "license": "ISC",
+  "dependencies": {
+    "date-holidays": "^1.4.2",
+    "express": "^4.17.1",
+    "luxon": "^1.17.2",
+    "postal": "^2.0.5"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^6.2.0",
+    "morgan": "^1.9.1"
+  },
+  "standard": {
+    "env": [ "mocha" ]
+  }
+}
