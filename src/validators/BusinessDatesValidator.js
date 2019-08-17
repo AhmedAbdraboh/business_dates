@@ -3,7 +3,8 @@ const ResponseUtil = require('../../utils/ResponseGenerator')
 const StatusCodes = require('../../utils/ResponseCodes')
 const RespondUtil = require('../../utils/RespondUtil')
 const Logger = require('../../logger')
-
+const isNumber = require('../../utils/isNumber')
+const isDate = require('../../utils/isDate')
 module.exports = {
   validateGetBusinessDatesParams (req, res, next) {
     const { initialDate, delay } = req.query
@@ -30,11 +31,9 @@ module.exports = {
 function isValidInitialDate (initialDate) {
   if (!initialDate) return false
   let initialDateObj = DateTime.fromISO(initialDate)
-  if (initialDateObj.invalid) return false
-  return true
+  return isDate(initialDateObj)
 }
 
 function isValidDelay (delay) {
-  if (!delay || isNaN(delay)) return false
-  return true
+  return isNumber(delay)
 }

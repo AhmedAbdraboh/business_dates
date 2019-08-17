@@ -43,5 +43,17 @@ to run the tests.
                         "weekendDays": 2
                   }
             }
+* GET 
+      /api/v1/businessDates/isBusinessDate
+   * Input Params: 
 
+            initialDate: ISODate
+
+    Ex: initialDate=2018-11-10T10:10:10Z
+   * Output: 
+
+            {
+                  "ok": true,
+                  "results": true || false
+            }
 
