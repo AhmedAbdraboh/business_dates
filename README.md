@@ -29,6 +29,7 @@ to run the tests.
 
     Ex: initialDate=2018-11-10T10:10:10Z&delay=3
    * Output: 
+   
             {
                   "ok": boolean,
                   "initialQuery": {
@@ -44,7 +45,8 @@ to run the tests.
             }
 
       EX:
-            {
+           
+           {
                   "ok": true,
                   "initialQuery": {
                         "initialDate": "2018-11-10T10:10:10Z",
@@ -65,11 +67,13 @@ to run the tests.
 
     Ex: initialDate=2018-11-10T10:10:10Z
    * Output: 
+   
             {
                   "ok": boolean,
                   "results": boolean
             }
       Ex: 
+      
             {
                   "ok": true,
                   "results": true || false
