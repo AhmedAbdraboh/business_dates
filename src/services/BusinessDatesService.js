@@ -1,11 +1,12 @@
-const ResponseUtil = require('../../utils/Response')
+const constants = require('../../constants')
 const { DateTime } = require('luxon')
 const Logger = require('../../logger')
 const Holidays = require('date-holidays')
 const hd = new Holidays('US')
 
 module.exports = {
-  getBusinessDates
+  getBusinessDates,
+  isBusinessDate
 }
 
 function getBusinessDates ({ initialDate, delay }) {
@@ -43,14 +44,20 @@ function getBusinessDates ({ initialDate, delay }) {
     totalDays, weekendDays, holidayDays, businessDate: businessDate.toString()
   } }
   Logger.info(response)
-  return ResponseUtil.generateSuccessResponse(response)
+  return response
 }
 
+function isBusinessDate (initialDate) {
+  const initialDateObj = DateTime.fromISO(initialDate)
+  const isBusinessDate = !isHoliday(initialDateObj) && !isHoliday(initialDateObj)
+  Logger.info(isBusinessDate)
+  return isBusinessDate
+}
 function isWeekEndDay (date) {
-  return date.weekdayShort === 'Sat' || date.weekdayShort === 'Sun'
+  return date.weekdayShort === constants.DAY_SAT || date.weekdayShort === constants.DAY_SUN
 }
 
 function isHoliday (date) {
   const holiday = hd.isHoliday(date.toJSDate())
-  return holiday && (holiday.type === 'bank' || holiday.type === 'public')
+  return holiday && (holiday.type === constants.HOLIDAY_BANK || holiday.type === constants.HOLIDAY_PUBLIC)
 }

@@ -8,7 +8,7 @@ const should = chai.should()
 
 describe('BusinessDates API', () => {
   describe('/api/v1/businessDates/', () => {
-    it('should return error with invalid params if query delay or initialDate params are not found or invalid in get request to /api/v1/businessDates/', function (done) {
+    it('should return error with invalid params if query delay or initialDate params are not found or invalid in get request to /api/v1/businessDates/getBusinessDateWithDelay', function (done) {
       chai.request(server).get('/api/v1/businessDates/getBusinessDateWithDelay').end(function (err, res) {
         should.equal(err, null)
         res.should.have.status(400)
@@ -129,6 +129,44 @@ describe('BusinessDates API', () => {
             'holidayDays': 3,
             'weekendDays': 8
           }
+        })
+        done()
+      })
+    })
+  })
+  describe('/api/v1/businessDates/', () => {
+    it('should return error with invalid params if initialDate param are not found or invalid in get request to /api/v1/businessDates/isBusinessDate', function (done) {
+      chai.request(server).get('/api/v1/businessDates/isBusinessDate').end(function (err, res) {
+        should.equal(err, null)
+        res.should.have.status(400)
+        res.body.message.should.equal('invalid params')
+        done()
+      })
+    })
+
+    it('should return true with valid business date in get request to /api/v1/businessDates/isBusinessDate?initialDate=2018-11-10T10:10:10Z', function (done) {
+      chai.request(server).get('/api/v1/businessDates/isBusinessDate?initialDate=2018-11-10T10:10:10Z').end(function (err, res) {
+        should.equal(err, null)
+        res.should.have.status(200)
+
+        console.log(res)
+        res.body.should.deep.equal({
+          ok: true,
+          results: true
+        })
+        done()
+      })
+    })
+
+    it('should return false with invalid business date in get request to /api/v1/businessDates/isBusinessDate?initialDate=2018-11-11T10:10:10Z', function (done) {
+      chai.request(server).get('/api/v1/businessDates/isBusinessDate?initialDate=2018-11-11T10:10:10Z').end(function (err, res) {
+        should.equal(err, null)
+        res.should.have.status(200)
+
+        console.log(res)
+        res.body.should.deep.equal({
+          ok: true,
+          results: false
         })
         done()
       })

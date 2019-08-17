@@ -11,7 +11,6 @@ describe('BusinessDates Service', () => {
         delay: 3
       })
       let expectedResult = {
-        'ok': true,
         'initialQuery': {
           'initialDate': '2018-11-10T10:10:10Z',
           'delay': 3
@@ -24,6 +23,21 @@ describe('BusinessDates Service', () => {
         }
       }
       actualResult.should.deep.equal(expectedResult)
+      done()
+    })
+  })
+
+  describe('isBusinessDate', () => {
+    it('should return true with date "November 10 2018"', function (done) {
+      let actualResult = BusinessService.isBusinessDate('2018-11-10T10:10:10Z')
+      let expectedResult = true
+      actualResult.should.equal(expectedResult)
+      done()
+    })
+    it('should return false with date "November 11 2018"', function (done) {
+      let actualResult = BusinessService.isBusinessDate('2018-11-11T10:10:10Z')
+      let expectedResult = false
+      actualResult.should.equal(expectedResult)
       done()
     })
   })
