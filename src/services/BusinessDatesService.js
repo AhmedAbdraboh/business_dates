@@ -11,7 +11,7 @@ module.exports = {
 
 function getBusinessDates ({ initialDate, delay }) {
   delay = Number(delay)
-  const initialDateObj = DateTime.fromISO(initialDate, { zone: 'utc' })
+  const initialDateObj = DateTime.fromISO(initialDate, { zone: 'gmt' })
   let delaysCount = 1
   let i = 0
   let totalDays = 0
