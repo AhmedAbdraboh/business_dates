@@ -11,7 +11,7 @@ describe('BusinessDates Pub/Sub', () => {
             'delay': 3
           },
           'results': {
-            'businessDate': '2018-11-15T12:10:10.000+02:00',
+            'businessDate': '2018-11-15T10:10:10.000Z',
             'totalDays': 6,
             'holidayDays': 1,
             'weekendDays': 2
@@ -36,7 +36,7 @@ describe('BusinessDates Pub/Sub', () => {
             'delay': 3
           },
           'results': {
-            'businessDate': '2018-11-19T00:00:00.000+02:00',
+            'businessDate': '2018-11-19T00:00:00.000Z',
             'totalDays': 5,
             'holidayDays': 0,
             'weekendDays': 2
@@ -52,7 +52,7 @@ describe('BusinessDates Pub/Sub', () => {
       })
     })
 
-    it('should return January 18th 2019 8 weekend days and 2 holiday days if message is published with topic businessDates and channel BankWire with date "December 25 2018", delay 20', function (done) {
+    it('should return January 24th 2019 8 weekend days and 3 holiday days if message is published with topic businessDates and channel BankWire with date "December 25 2018", delay 20', function (done) {
       let sub = BusinessDatesPubSub.subscribe(function (res) {
         res.should.deep.equal({
           'ok': true,
@@ -61,7 +61,7 @@ describe('BusinessDates Pub/Sub', () => {
             'delay': 20
           },
           'results': {
-            'businessDate': '2019-01-24T00:00:00.000+02:00',
+            'businessDate': '2019-01-24T00:00:00.000Z',
             'totalDays': 31,
             'holidayDays': 3,
             'weekendDays': 8

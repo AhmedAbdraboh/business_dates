@@ -16,7 +16,7 @@ describe('BusinessDates Service', () => {
           'delay': 3
         },
         'results': {
-          'businessDate': '2018-11-15T12:10:10.000+02:00',
+          'businessDate': '2018-11-15T10:10:10.000Z',
           'totalDays': 6,
           'holidayDays': 1,
           'weekendDays': 2

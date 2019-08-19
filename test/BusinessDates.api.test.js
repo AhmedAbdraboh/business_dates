@@ -26,7 +26,7 @@ describe('BusinessDates API', () => {
             'delay': 3
           },
           'results': {
-            'businessDate': '2018-11-15T12:10:10.000+02:00',
+            'businessDate': '2018-11-15T10:10:10.000Z',
             'totalDays': 6,
             'holidayDays': 1,
             'weekendDays': 2
@@ -45,7 +45,7 @@ describe('BusinessDates API', () => {
             'delay': 3
           },
           'results': {
-            'businessDate': '2018-11-15T12:10:10.000+02:00',
+            'businessDate': '2018-11-15T10:10:10.000Z',
             'totalDays': 6,
             'holidayDays': 1,
             'weekendDays': 2
@@ -65,7 +65,7 @@ describe('BusinessDates API', () => {
             'delay': 3
           },
           'results': {
-            'businessDate': '2018-11-19T00:00:00.000+02:00',
+            'businessDate': '2018-11-19T00:00:00.000Z',
             'totalDays': 5,
             'holidayDays': 0,
             'weekendDays': 2
@@ -85,7 +85,7 @@ describe('BusinessDates API', () => {
             'delay': 3
           },
           'results': {
-            'businessDate': '2018-11-19T00:00:00.000+02:00',
+            'businessDate': '2018-11-19T00:00:00.000Z',
             'totalDays': 5,
             'holidayDays': 0,
             'weekendDays': 2
@@ -95,7 +95,7 @@ describe('BusinessDates API', () => {
       })
     })
 
-    it('should return January 18th 2019 8 weekend days and 2 holiday days when calling the API /api/v1/businessDates/getBusinessDateWithDelay with date "December 25 2018", delay 20, POST Request', function (done) {
+    it('should return January 24th 2019 8 weekend days and 3 holiday days when calling the API /api/v1/businessDates/getBusinessDateWithDelay with date "December 25 2018", delay 20, POST Request', function (done) {
       chai.request(server).post('/api/v1/businessDates/getBusinessDateWithDelay?delay=20&initialDate=2018-12-25').end(function (err, res) {
         should.equal(err, null)
         res.body.should.deep.equal({
@@ -105,7 +105,7 @@ describe('BusinessDates API', () => {
             'delay': 20
           },
           'results': {
-            'businessDate': '2019-01-24T00:00:00.000+02:00',
+            'businessDate': '2019-01-24T00:00:00.000Z',
             'totalDays': 31,
             'holidayDays': 3,
             'weekendDays': 8
@@ -114,7 +114,7 @@ describe('BusinessDates API', () => {
         done()
       })
     })
-    it('should return January 18th 2019 8 weekend days and 2 holiday days when calling the API /api/v1/businessDates/getBusinessDateWithDelay with date "December 25 2018", delay 20, GET Request', function (done) {
+    it('should return January 24th 2019 8 weekend days and 3 holiday days when calling the API /api/v1/businessDates/getBusinessDateWithDelay with date "December 25 2018", delay 20, GET Request', function (done) {
       chai.request(server).get('/api/v1/businessDates/getBusinessDateWithDelay?delay=20&initialDate=2018-12-25').end(function (err, res) {
         should.equal(err, null)
         res.body.should.deep.equal({
@@ -124,7 +124,7 @@ describe('BusinessDates API', () => {
             'delay': 20
           },
           'results': {
-            'businessDate': '2019-01-24T00:00:00.000+02:00',
+            'businessDate': '2019-01-24T00:00:00.000Z',
             'totalDays': 31,
             'holidayDays': 3,
             'weekendDays': 8
@@ -148,8 +148,6 @@ describe('BusinessDates API', () => {
       chai.request(server).get('/api/v1/businessDates/isBusinessDate?initialDate=2018-11-10T10:10:10Z').end(function (err, res) {
         should.equal(err, null)
         res.should.have.status(200)
-
-        console.log(res)
         res.body.should.deep.equal({
           ok: true,
           results: true
@@ -162,8 +160,6 @@ describe('BusinessDates API', () => {
       chai.request(server).get('/api/v1/businessDates/isBusinessDate?initialDate=2018-11-11T10:10:10Z').end(function (err, res) {
         should.equal(err, null)
         res.should.have.status(200)
-
-        console.log(res)
         res.body.should.deep.equal({
           ok: true,
           results: false
